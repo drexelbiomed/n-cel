@@ -1,0 +1,22 @@
+---
+title: Recent Publications
+---
+%h1= current_page.data.title
+%ol
+  - data.publications.each do |pub|
+    %li
+      = pub.authors
+      = pub.title
+      = pub.journal
+      - case !pub.doi.blank?
+      - when true
+        = surround "doi: ", "." do
+          = link_to pub.doi, "http://dx.doi.org/#{pub.doi}"
+      - case !pub.pmid.blank?
+      - when true
+        = surround "PubMed PMID: ", "." do
+          = link_to pub.pmid, "https://www.ncbi.nlm.nih.gov/pubmed/#{pub.pmid}"
+      - case !pub.pmcid.blank?
+      - when true
+        = surround "PMCID: ", "." do
+          = link_to pub.pmcid, "https://www.ncbi.nlm.nih.gov/pmc/articles/#{pub.pmcid}"
