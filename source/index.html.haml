@@ -3,7 +3,16 @@ title: Home
 ---
 
 %ul.bxslider
-  %li= image_tag "http://placehold.it/500x335&text=one", title: "This is a caption"
-  %li= image_tag "http://placehold.it/500x335&text=two", title: "This is a caption"
-  %li= image_tag "http://placehold.it/500x335&text=three", title: "This is a caption"
-  %li= image_tag "http://placehold.it/500x335&text=four", title: "This is a caption"
+  %li= image_tag "slide-people.png", title: "#{link_to 'Lab Overview','lab/overview', class:'more-link'}"
+  %li= image_tag "slide-research.png", title: "#{link_to 'Recent Publications','publications/recent', class:'more-link'}"
+  %li= image_tag "slide-news.png", title: "#{link_to 'Recent News','news/recent', class:'more-link'}"
+  %li= image_tag "slide-research-2.png", title: "#{link_to 'Recent Publications','publications/recent', class:'more-link'}"
+
+%h2 Research Overview
+%p A key question in both clinical and basic neuroscience research is how to create synaptic connections to restore function to a damaged or malfunctioning neural circuit. To date, pharmacological treatments and neural implants show promise in generating new synaptic connections; however, neither offers control over where synapses are established. Because a circuit’s function relies on precision within its connectivity, a need exists to generate targeted synaptic connections as a standalone or supplemental strategy for neural circuit repair.
+%p Our laboratory focuses on three major topics that all share the long-term goal of informing and generating strategies for neural-circuit repair:
+%ol
+  %li Determining how neural circuit function emerges from precise synaptic connectivity.
+  %li Determining the molecular mechanisms that establish connectivity within circuits.
+  %li Designing genetic based tools to rewire or reestablish neural connections in disconnected or miswired neural circuits.
+%p We conduct this work in the model organism, <em>Drosophila melanogaster</em>. During development, synapse formation in the central nervous system of this tiny fruit fly utilizes mechanisms conserved in mammalian systems.  Due to this, <em>D. melanogaster</em> has provided tremendous insight on how connections are established and why connections become aberrant in neurodegenerative diseases and neurological disorders.  Most recently, the development of a genetic based neural-engineering tool kit has enabled an unprecedented ability to probe and modify neural circuits within the fruit fly brain.
