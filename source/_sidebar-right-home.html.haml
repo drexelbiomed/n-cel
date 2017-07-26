@@ -3,7 +3,7 @@
   %ul.unstyled
     - data.publications[0..2].each do |pub|
       %li
-        %strong= pub.title.chop
+        %strong= pub.title.gsub(/Drosophila/, "<em>Drosophila</em>").chop
         %br
         = pub.journal[/^[a-zA-Z\s]*./].chop
   = link_to "More Publications", "publications/recent", class: "more-link"
