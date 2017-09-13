@@ -25,3 +25,5 @@
   sub_pages:
     - title: Contact Us
       url: contact
+    - title: Relevant Links
+      url: links

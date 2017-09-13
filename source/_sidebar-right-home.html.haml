@@ -13,7 +13,7 @@
   %ul.unstyled
     - data.news[0..2].each do |n|
       %li
-        %strong= n.title
+        %strong= n.title.gsub(/<img(.*)\/>/, "")
         %br
         = n.date
   = link_to "More News", "news/recent", class: "more-link"
