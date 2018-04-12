@@ -1,101 +1,34 @@
 ###
-# Sprockets
-###
-require 'rake/file_list'
-require 'pathname'
-require 'date'
-
-bower_directory = 'source/bower_components'
-
-# Build search patterns
-patterns = [
-  '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
-  '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
-  '.js',                                    # Javascript
-].map { |e| File.join(bower_directory, "**", "*#{e}" ) }
-
-# Create file list and exclude unwanted files
-Rake::FileList.new(*patterns) do |l|
-  l.exclude(/src/)
-  l.exclude(/test/)
-  l.exclude(/demo/)
-  l.exclude { |f| !File.file? f }
-end.each do |f|
-  # Import relative paths
-  sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new(bower_directory)))
-end
-
-###
-# Compass
-###
-
-compass_config do |config|
-  # Require any additional compass plugins here.
-  config.add_import_path "bower_components"
-  config.add_import_path "bower_components/foundation/scss"
-  config.add_import_path "bower_components/foundation-3/stylesheets"
-  config.add_import_path "bower_components/normalize/"
-  config.add_import_path "bower_components/bxslider-4/"
-
-  # Set this to the root of your project when deployed:
-  config.http_path = "#{data.ftp.path}/"
-  config.css_dir = "stylesheets"
-  config.sass_dir = "stylesheets"
-  config.images_dir = "images"
-  config.javascripts_dir = "javascripts"
-  # config.layout_dir = "layouts"
-
-  # You can select your preferred output style here (can be overridden via the command line):
-  # output_style = :expanded or :nested or :compact or :compressed
-
-  # To enable relative paths to assets via compass helper functions. Uncomment:
-  # relative_assets = true
-
-end
-
-# Disable HAML warnings
-Haml::TempleEngine.disable_option_validator!
-
-###
 # Page options, layouts, aliases and proxies
 ###
 
 # Per-page layout changes:
 #
 # With no layout
-# page "/path/to/file.html", :layout => false
-#
+page '/*.xml', layout: false
+page '/*.json', layout: false
+page '/*.txt', layout: false
+
 # With alternative layout
 page "index.html", :layout => "home-page"
 
-# data.pages.each do |page|
-#   proxy "/#{page.url}.html", "/.html", :locals => { :title => page.title }, ignore => true
-# end
+# With alternative layout
+# page "/path/to/file.html", layout: :otherlayout
 
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
+# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
+# which_fake_page: "Rendering a fake page with a local variable" }
 
-# Proxy pages (http://middlemanapp.com/dynamic-pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
-#  :which_fake_page => "Rendering a fake page with a local variable" }
-
-# Reload the browser automatically whenever files change
-activate :livereload
-activate :directory_indexes
-
-set :http_prefix, "/"
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
-
-set :haml, { :ugly => true, :format => :html5 }
+###
+# Helpers
+###
 
 helpers do
+  def http_prefix
+    build? ? "/labs/nce" : "/"
+  end
   def current_page?(page)
-    if page.title == current_page.data.title
+    if page.title == current_resource.data.title
       return true
     else
       return false
@@ -107,7 +40,7 @@ helpers do
 
     if page.sub_pages?
       page.sub_pages.each do |sub|
-        if sub.title == current_page.data.title # if we are on the sub page
+        if sub.title == current_resource.data.title # if we are on the sub page
           is_sub_page = true                  # trip the switch
         end
       end
@@ -118,52 +51,109 @@ helpers do
   def test_values_compared_in_cp_vs_subpage(page)
     a = ""
     page.sub_pages.each do |sub|
-      a+="<p>#{sub.title}, #{current_page.data.title} "
-      a+="is #{sub.title == current_page.data.title}</p>"
+      a+="<p>#{sub.title}, #{current_resource.data.title} "
+      a+="is #{sub.title == current_resource.data.title}</p>"
     end
     return a
   end
 end
 
-# Add bower's directory to sprockets asset path
-after_configuration do
-  @bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
-  sprockets.append_path File.join "#{root}", @bower_config["directory"]
+###
+# Environment List
+###
+
+# Server Environment
+configure :server do
+
+  # Debug assets
+  set :debug_assets, true
+
 end
 
-# set :relative_links, true
+# Development Environment
+configure :development do
 
-activate :deploy do |deploy|
-  # ...
-  # deploy.build_before = true # default: false
+  #To activate the middleman-sprockets
+  activate :sprockets
+  sprockets.append_path File.join root, "bower_components"
 
-  deploy.method   = :ftp
-  deploy.host     = data.azure.host
-  deploy.path     = data.azure.path
-  deploy.user     = data.azure.user
-  deploy.password = data.azure.pass
-end
+  # Automatic image dimensions on image_tag helpers
+  activate :automatic_image_sizes
 
-# Build-specific configuration
-configure :build do
-  # Ignore irrelevant directories during build
+  # Reload the browser automatically whenever files change
+  activate :livereload,  :no_swf => true
+
+  # Haml Configuration
+  # Disable Haml warnings
+  Haml::TempleEngine.disable_option_validator!
+  Haml::Options.defaults[:format] = :html5
+
+  # Assets Pipeline Sets
+  set :css_dir, 'assets/stylesheets'
+  set :js_dir, 'assets/javascripts'
+  set :images_dir, 'assets/images'
+  set :fonts_dir, 'assets/fonts'
+
+  # Pretty URLs
+  # activate :directory_indexes
   ignore 'bower_components/**'
   ignore '*.psd'
 
-  # For example, change the Compass output style for deployment
-  # activate :minify_css
+end
+
+# Build Environment
+configure :build do
+
+  #To activate the middleman-sprockets
+  activate :sprockets
+
+  # Minify CSS on build
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 
-  # Enable cache buster
-  # activate :asset_hash
+  # GZIP text files
+  # activate :gzip
 
   # Use relative URLs
-  # activate :relative_assets
+  activate :relative_assets
 
-  # set :relative_links, true
+  ignore "*.psd"
 
-  # Or use a different image path
-  set :http_prefix, "#{data.ftp.path}/"
+  # Middleman Deploy (https://github.com/middleman-contrib/middleman-deploy/)
+  case ENV['TARGET'].to_s.downcase
+    when 'biomed'
+      activate :deploy do |deploy|
+        deploy.deploy_method   = :ftp
+        deploy.host            = ENV["BIOMED_HOST"]
+        deploy.path            = ENV["BIOMED_PATH"] + "labs/nce"
+        deploy.user            = ENV["BIOMED_USER"]
+        deploy.password        = ENV["BIOMED_PASS"]
+        deploy.build_before = true
+      end
+    when 'azure'
+      activate :deploy do |deploy|
+        deploy.deploy_method   = :ftp
+        deploy.host            = ENV["AZURE_HOST"]
+        deploy.path            = ENV["AZURE_PATH"] + "labs/nce"
+        deploy.user            = ENV["AZURE_USER"]
+        deploy.password        = ENV["AZURE_PASS"]
+        deploy.build_before = true
+      end
+    end
+end
+
+# Production Environment
+configure :production do
+
+  # Assets Pipeline Sets
+  set :css_dir, 'assets/stylesheets'
+  set :js_dir, 'assets/javascripts'
+  set :images_dir, 'assets/images'
+  set :fonts_dir, 'assets/fonts'
+
+  # Middleman Production dev server run code
+  # 'middleman server -e production'
+
 end
