@@ -25,7 +25,7 @@ page "index.html", :layout => "home-page"
 
 helpers do
   def http_prefix
-    build? ? "/labs/nce" : "/"
+    build? ? "/labs/nce/" : "/"
   end
   def current_page?(page)
     if page.title == current_resource.data.title
@@ -75,10 +75,9 @@ configure :development do
 
   #To activate the middleman-sprockets
   activate :sprockets
-  sprockets.append_path File.join root, "bower_components"
 
   # Automatic image dimensions on image_tag helpers
-  activate :automatic_image_sizes
+  # activate :automatic_image_sizes
 
   # Reload the browser automatically whenever files change
   activate :livereload,  :no_swf => true
@@ -95,14 +94,15 @@ configure :development do
   set :fonts_dir, 'assets/fonts'
 
   # Pretty URLs
-  # activate :directory_indexes
-  ignore 'bower_components/**'
+  activate :directory_indexes
   ignore '*.psd'
 
 end
 
 # Build Environment
 configure :build do
+  ignore '*/vendor/**'
+  ignore '*.psd'
 
   #To activate the middleman-sprockets
   activate :sprockets
@@ -136,7 +136,7 @@ configure :build do
       activate :deploy do |deploy|
         deploy.deploy_method   = :ftp
         deploy.host            = ENV["AZURE_HOST"]
-        deploy.path            = ENV["AZURE_PATH"] + "labs/nce"
+        deploy.path            = ENV["AZURE_PATH"] + "/labs/nce"
         deploy.user            = ENV["AZURE_USER"]
         deploy.password        = ENV["AZURE_PASS"]
         deploy.build_before = true
