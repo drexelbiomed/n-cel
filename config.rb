@@ -19,6 +19,11 @@ page "index.html", :layout => "home-page"
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 # which_fake_page: "Rendering a fake page with a local variable" }
 
+activate :sprockets do |c|
+  c.expose_middleman_helpers = true
+end
+
+
 ###
 # Helpers
 ###
@@ -72,10 +77,9 @@ end
 
 # Development Environment
 configure :development do
-  files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
 
   #To activate the middleman-sprockets
-  activate :sprockets
+  files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
 
   # Automatic image dimensions on image_tag helpers
   # activate :automatic_image_sizes
@@ -94,8 +98,12 @@ configure :development do
   set :images_dir, 'assets/images'
   set :fonts_dir, 'assets/fonts'
 
+  #To activate the middleman-sprockets
+
   # Pretty URLs
   activate :directory_indexes
+
+  # Ignore large files
   ignore '*.psd'
 
 end
@@ -105,8 +113,12 @@ configure :build do
   ignore '*/vendor/**'
   ignore '*.psd'
 
+  files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
+
   #To activate the middleman-sprockets
-  activate :sprockets
+  after_configuration do
+    sprockets.append_path "/Users/Dave/src/_shared/source"
+  end
 
   # Minify CSS on build
   activate :minify_css
