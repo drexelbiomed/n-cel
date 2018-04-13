@@ -12,6 +12,8 @@
 
 /node_modules
 
+/.tmp
+
 # Ignore the build directory
 /build
 

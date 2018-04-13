@@ -19,9 +19,11 @@ page "index.html", :layout => "home-page"
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 # which_fake_page: "Rendering a fake page with a local variable" }
 
-activate :sprockets do |c|
-  c.expose_middleman_helpers = true
-end
+activate :external_pipeline,
+  name: :gulp,
+  command: build? ? 'npm run build' : 'npm run development',
+  source: ".tmp",
+  latency: 1
 
 
 ###
