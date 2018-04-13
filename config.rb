@@ -21,8 +21,8 @@ page "index.html", :layout => "home-page"
 
 activate :external_pipeline,
   name: :gulp,
-  command: build? ? 'npm run build' : 'npm run development',
-  source: ".tmp",
+  command: build? ? 'npm run build' : 'gulp watch',
+  source: ".tmp/assets",
   latency: 1
 
 
@@ -107,6 +107,7 @@ configure :development do
 
   # Ignore large files
   ignore '*.psd'
+  # ignore '**/vendor/*'
 
 end
 
@@ -115,12 +116,12 @@ configure :build do
   ignore '*/vendor/**'
   ignore '*.psd'
 
-  files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
+  # files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
 
   #To activate the middleman-sprockets
-  after_configuration do
-    sprockets.append_path "/Users/Dave/src/_shared/source"
-  end
+  # after_configuration do
+  #   sprockets.append_path "/Users/Dave/src/_shared/source"
+  # end
 
   # Minify CSS on build
   activate :minify_css
