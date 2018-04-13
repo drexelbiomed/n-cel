@@ -72,6 +72,7 @@ end
 
 # Development Environment
 configure :development do
+  files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
 
   #To activate the middleman-sprockets
   activate :sprockets
