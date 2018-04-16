@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-coffee": "latest",
+    "gulp-concat": "latest",
+    "gulp-connect": "latest",
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest"
+  },
+  "name": "nce",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/drexelbiomed/nce.git",
+  "author": "David Myers <davidmyers9000@gmail.com>",
+  "license": "MIT"
+}

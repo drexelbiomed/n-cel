@@ -1,19 +1,20 @@
 / Foundation 3 for IE 9 and earlier
 = surround "<!--[if lte IE 8]>", "<![endif]-->" do
-  = javascript_include_tag "vendor/jquery-1.11.1"
-  = javascript_include_tag "vendor/foundation-3.min"
-  = javascript_include_tag "vendor/jquery.bxslider.js"
-  = javascript_include_tag "vendor/foundation-3-app"
+  = surround "<!-- build:js assets/javascripts/legacy.js -->", "<!-- endbuild -->" do
+    = javascript_include_tag "vendor/jquery-1.11.1"
+    = javascript_include_tag "vendor/foundation-3.min"
+    = javascript_include_tag "vendor/jquery.bxslider.js"
+    = javascript_include_tag "vendor/foundation-3-app"
 
-  = javascript_include_tag "bxslider"
+    = javascript_include_tag "bxslider"
 
 
 / Foundation 5 for IE 10 and up
 = surround "<!--[if gte IE 9]><!-->", "<!--<![endif]-->" do
-  / = javascript_include_tag "modern"
-  = javascript_include_tag "vendor/jquery-1.11.3"
-  = javascript_include_tag "vendor/foundation-5.min"
-  = javascript_include_tag "vendor/jquery.bxslider"
+  = surround "<!-- build:js assets/javascripts/modern.js -->", "<!-- endbuild -->" do
+    = javascript_include_tag "vendor/jquery-1.11.3"
+    = javascript_include_tag "vendor/foundation-5.min"
+    = javascript_include_tag "vendor/jquery.bxslider"
 
-  = javascript_include_tag "app"
-  = javascript_include_tag "bxslider"
+    = javascript_include_tag "app"
+    = javascript_include_tag "bxslider"

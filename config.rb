@@ -80,8 +80,8 @@ end
 # Development Environment
 configure :development do
 
-  #To activate the middleman-sprockets
-  files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
+  # Watch files outside source.
+  # files.watch :source, path: "/Users/Dave/src/_shared/source", priority: -1
 
   # Automatic image dimensions on image_tag helpers
   # activate :automatic_image_sizes
@@ -158,18 +158,4 @@ configure :build do
         deploy.build_before = true
       end
     end
-end
-
-# Production Environment
-configure :production do
-
-  # Assets Pipeline Sets
-  set :css_dir, 'assets/stylesheets'
-  set :js_dir, 'assets/javascripts'
-  set :images_dir, 'assets/images'
-  set :fonts_dir, 'assets/fonts'
-
-  # Middleman Production dev server run code
-  # 'middleman server -e production'
-
 end
