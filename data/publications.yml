@@ -1,3 +1,10 @@
+- authors: Goodman DP, Eldredge A, von Reyn CR.
+  title: A Novel Assay to Evaluate Action Selection in Escape Behavior.
+  journal: J Neurosci Methods. 2017;94(6):1190-204 e6.
+  doi: 10.1016/j.jneumeth.2018.04.019
+  pmid: 29715480
+  pmcid:
+
 - authors: von Reyn CR, Nern A, Williamson WR, Breads P, Wu M, Namiki S, Card GM.
   title: Feature Integration Drives Probabilistic Behavior in the Drosophila Escape Response.
   journal: Neuron. 2017;94(6):1190-204 e6.
@@ -6,7 +13,7 @@
   pmcid:
 
 - authors: von Reyn CR, Breads P, Peek MY, Zheng GZ, Williamson WR, Yee AL, Leonardo A, Card GM.
-  title: A spike-timing mechanism for action selection.
+  title: A Spike-timing Mechanism for Action Selection.
   journal: Nat Neurosci. 2014;17(7):962-70.
   doi: 10.1038/nn.3741
   pmid: 24908103

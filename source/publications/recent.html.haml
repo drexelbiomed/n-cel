@@ -5,7 +5,7 @@ title: Recent Publications
 %ol
   - data.publications.each do |pub|
     %li
-      = pub.authors
+      = pub.authors.gsub("von Reyn CR", "<strong>von Reyn CR</strong>")
       = pub.title
       = pub.journal
       - case !pub.doi.blank?

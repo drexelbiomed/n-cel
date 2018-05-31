@@ -31,7 +31,8 @@ end
 
 compass_config do |config|
   # Require any additional compass plugins here.
-  config.add_import_path "bower_components"
+  config.add_import_path "bower_components/"
+  config.add_import_path "bower_components/foundation/scss/foundation"
   config.add_import_path "bower_components/foundation/scss"
   config.add_import_path "bower_components/foundation-3/stylesheets"
   config.add_import_path "bower_components/normalize/"
@@ -138,10 +139,10 @@ activate :deploy do |deploy|
   # deploy.build_before = true # default: false
 
   deploy.method   = :ftp
-  deploy.host     = data.azure.host
-  deploy.path     = data.azure.path
-  deploy.user     = data.azure.user
-  deploy.password = data.azure.pass
+  deploy.host     = data.ftp.host
+  deploy.path     = data.ftp.path
+  deploy.user     = data.ftp.user
+  deploy.password = data.ftp.pass
 end
 
 # Build-specific configuration
