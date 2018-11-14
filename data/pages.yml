@@ -17,8 +17,8 @@
 - title: Blog
   url: blog
   sub_pages:
-    - title: Blog Articles
-      url: articles
+    - title: TAPIN into Gene Expression
+      url: tapin-into-gene-expression
 
 - title: About
   url: about

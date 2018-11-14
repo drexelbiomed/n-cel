@@ -136,7 +136,7 @@ end
 
 activate :deploy do |deploy|
   # ...
-  # deploy.build_before = true # default: false
+  deploy.build_before = true # default: false
 
   deploy.method   = :ftp
   deploy.host     = data.ftp.host

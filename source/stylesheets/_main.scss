@@ -97,6 +97,12 @@ ul.bg-image {
     }
   }
 
+  .main-content.medium-9 {
+    @media #{$medium-up} {
+      border-right: none;
+    }
+  }
+
   .main-content, .main-content-home, .sidebar-right, .sidebar-left {
     padding-top: 14px;
   }
@@ -177,4 +183,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
     line-height: 16px;
   }
+}
+
+sup {
+  vertical-align: top;
+  font-size: 0.75em;
+  padding-left: 1px;
 }
