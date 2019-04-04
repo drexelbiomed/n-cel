@@ -1,55 +1,89 @@
+- authors: Ache JM, Polsky J, Alghailani S, Parekh R, Breads P, Peek MY, Bock DD, von Reyn CR, Card GM.
+  title: Neural Basis for Looming Size and Velocity Encoding in the Drosophila Giant Fiber Escape Pathway.
+  journal: Curr Biol. 2019 Mar 18;29(6):1073-1081.e4.
+  doi: 10.1016/j.cub.2019.01.079
+  epub: 2019 Feb 28
+  pmid: 30827912
+  pmcid:
+  citedby:
+  rel: https://www.ncbi.nlm.nih.gov/pubmed?Db=pubmed&DbFrom=pubmed&Cmd=Link&LinkName=pubmed_pubmed&IdsFromResult=30827912
+
 - authors: Goodman DP, Eldredge A, von Reyn CR.
   title: A Novel Assay to Evaluate Action Selection in Escape Behavior.
   journal: J Neurosci Methods. 2017;94(6):1190-204 e6.
   doi: 10.1016/j.jneumeth.2018.04.019
+  epub: 
   pmid: 29715480
   pmcid:
+  citedby:
+  rel: https://www.ncbi.nlm.nih.gov/pubmed?Db=pubmed&DbFrom=pubmed&Cmd=Link&LinkName=pubmed_pubmed&IdsFromResult=30827912
 
 - authors: von Reyn CR, Nern A, Williamson WR, Breads P, Wu M, Namiki S, Card GM.
   title: Feature Integration Drives Probabilistic Behavior in the Drosophila Escape Response.
   journal: Neuron. 2017;94(6):1190-204 e6.
   doi: 10.1016/j.neuron.2017.05.036
+  epub: 
   pmid: 28641115
   pmcid:
+  citedby: https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/28641115/citedby/?tool=myncbi
+  rel: https://www.ncbi.nlm.nih.gov/pubmed?Db=pubmed&DbFrom=pubmed&Cmd=Link&LinkName=pubmed_pubmed&IdsFromResult=28641115
 
 - authors: von Reyn CR, Breads P, Peek MY, Zheng GZ, Williamson WR, Yee AL, Leonardo A, Card GM.
   title: A Spike-timing Mechanism for Action Selection.
   journal: Nat Neurosci. 2014;17(7):962-70.
   doi: 10.1038/nn.3741
+  epub: 
   pmid: 24908103
   pmcid:
+  citedby:
+  rel: 
 
 - authors: Schoch KM, von Reyn CR, Bian J, Telling GC, Meaney DF, Saatman KE.
   title: Brain injury-induced proteolysis is reduced in a novel calpastatin-overexpressing transgenic mouse.
   journal: J Neurochem. 2013;125(6):909-20.
   doi: 10.1111/jnc.12144
+  epub: 
   pmid: 23305291
   pmcid: PMC3676438
+  citedby:
+  rel:
 
 - authors: Mesfin MN, von Reyn CR, Mott RE, Putt ME, Meaney DF.
   title: In vitro stretch injury induces time- and severity-dependent alterations of STEP phosphorylation and proteolysis in neurons.
   journal: J Neurotrauma. 2012;29(10):1982-98.
   doi: 10.1089/neu.2011.2253
+  epub: 
   pmid: 22435660
   pmcid: PMC3390986
+  citedby:
+  rel:
 
 - authors: von Reyn CR, Mott RE, Siman R, Smith DH, Meaney DF.
   title: Mechanisms of calpain mediated proteolysis of voltage gated sodium channel alpha-subunits following in vitro dynamic stretch injury.
   journal: J Neurochem. 2012;121(5):793-805.
   doi: 10.1111/j.1471-4159.2012.07735.x
+  epub: 
   pmid: 22428606
   pmcid:
+  citedby:
+  rel:
 
 - authors: von Reyn CR, Spaethling JM, Mesfin MN, Ma M, Neumar RW, Smith DH, Siman R, Meaney DF.
   title: Calpain mediates proteolysis of the voltage-gated sodium channel alpha-subunit.
   journal: J Neurosci. 2009;29(33):10350-6.
   doi: 10.1523/JNEUROSCI.2339-09.2009
+  epub: 
   pmid: 19692609
   pmcid: PMC2799681
+  citedby:
+  rel:
 
 - authors: Spaethling JM, Geddes-Klein DM, Miller WJ, von Reyn CR, Singh P, Mesfin M, Bernstein SJ, Meaney DF.
   title: "Linking impact to cellular and molecular sequelae of CNS injury: modeling in vivo complexity with in vitro simplicity."
   journal: Prog Brain Res. 2007;161:27-39.
   doi: 10.1016/S0079-6123(06)61003-0
+  epub: 
   pmid: 17618968
   pmcid:
+  citedby:
+  rel:

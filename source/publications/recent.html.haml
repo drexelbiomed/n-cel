@@ -5,18 +5,51 @@ title: Recent Publications
 %ol
   - data.publications.each do |pub|
     %li
+      / Authors
       = pub.authors.gsub("von Reyn CR", "<strong>von Reyn CR</strong>")
-      = pub.title
+      
+      / Title
+      - case !pub.doi.blank?
+      - when true
+        = link_to pub.title, "https://dx.doi.org/#{pub.doi}", style:"color: black;"
+      - when false
+        = pub.title
+      
+      /Journal
       = pub.journal
+      
+      / DOI
       - case !pub.doi.blank?
       - when true
         = surround "doi: ", "." do
-          = link_to pub.doi, "http://dx.doi.org/#{pub.doi}"
+          = link_to pub.doi, "https://dx.doi.org/#{pub.doi}"
+      
+      / Epub date
+      - case !pub.epub.blank?
+      - when true
+        = surround "Epub ", "." do
+          = pub.epub
+      
+      / PMID
       - case !pub.pmid.blank?
       - when true
         = surround "PubMed PMID: ", "." do
           = link_to pub.pmid, "https://www.ncbi.nlm.nih.gov/pubmed/#{pub.pmid}"
+      
+      / PMCID
       - case !pub.pmcid.blank?
       - when true
         = surround "PMCID: ", "." do
           = link_to pub.pmcid, "https://www.ncbi.nlm.nih.gov/pmc/articles/#{pub.pmcid}"
+      
+      / Cited by
+      - case !pub.citedby.blank?
+      - when true
+        = surround "[", "]" do
+          = link_to "Cited in PMC", pub.citedby
+
+      / Related citations
+      - case !pub.rel.blank?
+      - when true
+        = surround "[", "]" do
+          = link_to "Related citations", pub.rel
